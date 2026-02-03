@@ -1,145 +1,320 @@
-<!--Website code-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>W3.CSS Template</title>
 <meta charset="UTF-8">
+<title>Prime Web Solutions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+<!-- Performance: Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- W3 CSS (non-blocking) -->
+<link rel="preload" href="https://www.w3schools.com/w3css/5/w3.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css"></noscript>
+
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+/* =====================
+   THEME VARIABLES
+===================== */
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --card: #f4f4f4;
+  --blue: #0d47a1;
+  --orange: #ff9800;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f1f1f1;
+  --card: #1e1e1e;
+}
+
+/* =====================
+   BASE STYLES
+===================== */
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.w3-top {
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+}
+
+.nav-btn {
+  color: white;
+}
+
+/* =====================
+   SIDEBAR
+===================== */
 .w3-sidebar {
-  z-index: 3;
-  width: 250px;
-  top: 43px;
-  bottom: 0;
-  height: inherit;
+  width: 240px;
+  background: var(--card);
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  background: linear-gradient(135deg, var(--blue), var(--orange));
+  color: white;
+  padding: 120px 24px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+.section {
+  padding: 64px 24px;
+}
+
+.section h2 {
+  border-left: 6px solid var(--orange);
+  padding-left: 12px;
+  color: var(--blue);
+}
+
+/* =====================
+   CARDS
+===================== */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.15);
+}
+
+/* =====================
+   SCROLL ANIMATION
+===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  background: var(--blue);
+  color: white;
+}
+
+/* =====================
+   DARK MODE BUTTON
+===================== */
+.toggle-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
 }
 </style>
 </head>
+
 <body>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 <div class="w3-top">
-  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Values</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>
+  <div class="w3-bar w3-large">
+    <a class="w3-bar-item w3-button w3-hide-large nav-btn" onclick="openMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button nav-btn"><b>PRIME</b></a>
+    <a href="#about" class="w3-bar-item w3-button nav-btn w3-hide-small">About</a>
+    <a href="#services" class="w3-bar-item w3-button nav-btn w3-hide-small">Services</a>
+    <a href="#contact" class="w3-bar-item w3-button nav-btn w3-hide-small">Contact</a>
   </div>
 </div>
 
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+<!-- SIDEBAR -->
+<nav class="w3-sidebar w3-bar-block w3-collapse" id="sidebar">
+  <a onclick="closeMenu()" class="w3-right w3-xlarge w3-padding">
     <i class="fa fa-remove"></i>
   </a>
-  <h4 class="w3-bar-item"><b>Menu</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
+  <a href="#home" class="w3-bar-item w3-button">Home</a>
+  <a href="#about" class="w3-bar-item w3-button">About</a>
+  <a href="#services" class="w3-bar-item w3-button">Services</a>
+  <a href="#contact" class="w3-bar-item w3-button">Contact</a>
 </nav>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large" onclick="closeMenu()" id="overlay"></div>
 
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:250px">
+<!-- MAIN -->
+<div class="w3-main" style="margin-left:240px">
 
-  <div class="w3-row w3-padding-64">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">Heading</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Prime Web Solutions</h1>
+  <p>Fast. Modern. Secure web experiences built for performance.</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section reveal">
+  <h2>About</h2>
+  <p>
+    Prime delivers clean, responsive and scalable web solutions.
+    We focus on clarity, speed and long-term reliability.
+  </p>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section reveal">
+  <h2>Services</h2>
+  <div class="w3-row-padding">
+
+    <div class="w3-third">
+      <div class="card w3-padding">
+        <h3><i class="fa fa-code"></i> Development</h3>
+        <p>High-performance, maintainable applications.</p>
+      </div>
     </div>
-    <div class="w3-third w3-container">
-      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+
+    <div class="w3-third">
+      <div class="card w3-padding">
+        <h3><i class="fa fa-paint-brush"></i> Design</h3>
+        <p>Modern UI/UX with purpose and clarity.</p>
+      </div>
     </div>
+
+    <div class="w3-third">
+      <div class="card w3-padding">
+        <h3><i class="fa fa-shield"></i> Security</h3>
+        <p>Secure, reliable and future-proof solutions.</p>
+      </div>
+    </div>
+
   </div>
+</section>
 
-  <div class="w3-row">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">Heading</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div class="w3-third w3-container">
-      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-    </div>
-  </div>
+<!-- CONTACT -->
+<section id="contact" class="section reveal">
+  <h2>Contact</h2>
 
-  <div class="w3-row w3-padding-64">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">Heading</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div class="w3-third w3-container">
-      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-    </div>
-  </div>
+  <form
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+    class="w3-container w3-card w3-padding card"
+  >
 
-  <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a class="w3-button w3-black" href="#">1</a>
-      <a class="w3-button w3-hover-black" href="#">2</a>
-      <a class="w3-button w3-hover-black" href="#">3</a>
-      <a class="w3-button w3-hover-black" href="#">4</a>
-      <a class="w3-button w3-hover-black" href="#">5</a>
-      <a class="w3-button w3-hover-black" href="#">»</a>
-    </div>
-  </div>
+    <label>Name</label>
+    <input class="w3-input" type="text" name="name" required>
 
-  <footer id="myFooter">
-    <div class="w3-container w3-theme-l2 w3-padding-32">
-      <h4>Footer</h4>
-    </div>
+    <label>Email</label>
+    <input class="w3-input" type="email" name="email" required>
 
-    <div class="w3-container w3-theme-l1">
-      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-    </div>
-  </footer>
+    <label>Message</label>
+    <textarea class="w3-input" name="message" required></textarea>
 
-<!-- END MAIN -->
+    <button class="w3-button w3-orange w3-margin-top">
+      Send Message
+    </button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="w3-center w3-padding-32">
+  <p>© 2026 Prime Web Solutions</p>
+</footer>
+
 </div>
 
-<script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
+<!-- DARK MODE BUTTON -->
+<button class="w3-button w3-black w3-round toggle-btn" onclick="toggleDark()">
+  <i class="fa fa-moon-o"></i>
+</button>
 
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
+<script defer>
+/* =====================
+   MENU
+===================== */
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
 
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
+function openMenu() {
+  sidebar.style.display = "block";
+  overlay.style.display = "block";
+}
+function closeMenu() {
+  sidebar.style.display = "none";
+  overlay.style.display = "none";
+}
+
+/* =====================
+   DARK MODE
+===================== */
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+}
+if (localStorage.getItem("darkMode") === "true") {
+  document.body.classList.add("dark");
+}
+
+/* =====================
+   SCROLL ANIMATION (OPTIMIZED)
+===================== */
+const reveals = document.querySelectorAll(".reveal");
+let ticking = false;
+
+function revealOnScroll() {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      revealOnScroll();
+      ticking = false;
+    });
+    ticking = true;
   }
-}
+});
 
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
+revealOnScroll();
 </script>
 
 </body>
 </html>
-
